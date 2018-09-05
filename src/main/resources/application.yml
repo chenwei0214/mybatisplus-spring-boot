@@ -7,8 +7,6 @@ spring:
     # 使用druid数据源，替换DBCP和C3P0 。 druid可查看https://www.cnblogs.com/soundcode/p/6485375.html
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    # 旧的版本需要使用 com.mysql.jdbc.Driver
-    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/ease-run?useUnicode=true&characterEncoding=UTF-8
 
 mybatis-plus:
