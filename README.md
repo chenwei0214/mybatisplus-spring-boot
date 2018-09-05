@@ -1,5 +1,6 @@
-mybatisplus-demo
-mybatis-plus:
+## mybatisplus-demo
+### mybatis-plus 常用配置说明
+````
   # 如果是放在src/main/java目录下 classpath:/com/yourpackage/*/mapper/*Mapper.xml
   # 如果是放在resource目录 classpath:/mapper/*Mapper.xml
   mapper-locations: classpath:/mapper/*Mapper.xml
@@ -32,3 +33,4 @@ mybatis-plus:
     cache-enabled: false
     #配置JdbcTypeForNull, oracle数据库必须配置
     jdbc-type-for-null: 'null'
+````
