@@ -1,68 +1,34 @@
-# mybatisplus-spring-boot  Demo
-
-![Mybatis-Plus-Logo](http://git.oschina.net/uploads/images/2016/0824/211639_4d931e7f_12260.png "logo")
-
-[![license](https://img.shields.io/github/license/baomidou/mybatis-plus.svg?maxAge=2592000)](http://www.apache.org/licenses/LICENSE-2.0)
-[![GitHub release](https://img.shields.io/github/release/baomidou/mybatis-plus.svg?maxAge=2592000)](https://github.com/baomidou/mybatis-plus)
-
-> 为简化开发工作、提高生产率而生
-
-# 简介 | Intro
-
-Mybatis Plus - Spring Boot Demo
-
-* jdk-version: 1.8 
-* spring-boot-version: 2.0.3.RELEASE
-* spring-framework-verson: 5.0.7.RELEASE
-* mp-boot-starter(mp)-version: 3.0-beta
-* database: h2(boot默认数据库，如需修改，请在application.properties中查看mysql配置)
-
-> 技术讨论 QQ 群 576493122[（有钱的捧个钱场【点击捐赠】, 没钱的捧个人场）](http://git.oschina.net/uploads/images/2015/1222/211207_0acab44e_12260.png)
-
-# MP文档 | Documentation
-
-[中文](http://mp.baomidou.com/) | [English](http://mp.baomidou.com/en/)
-
-# 原理 | Principle
-
-[Mybatis-Plus 实践及架构原理](http://git.oschina.net/baomidou/mybatis-plus/attach_files)
-
-# 应用实例 | Demo
-
-[Spring-MVC](https://git.oschina.net/baomidou/mybatisplus-spring-mvc)
-
-[Spring-Boot](https://git.oschina.net/baomidou/mybatisplus-spring-boot)
-
-[SSM-实战 Demo](http://git.oschina.net/juapk/SpringWind)
-
-# 下载地址 | Download
-
-[点此去下载](http://maven.aliyun.com/nexus/#nexus-search;quick~mybatis-plus)
-
-```xml
-<dependency>
-    <groupId>com.baomidou</groupId>
-    <artifactId>mybatis-plus</artifactId>
-    <version>maven 官方最新版本为准</version>
-</dependency>
-```
-
-# 其他开源项目 | Other Project
-
-- [基于Cookie的SSO中间件 Kisso](http://git.oschina.net/baomidou/kisso)
-- [Java快速开发框架 SpringWind](http://git.oschina.net/juapk/SpringWind)
-
-# 期望 | Futures
-
-> 欢迎提出更好的意见，帮助完善 Mybatis-Plus
-
-# 版权 | License
-
-[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
-# 捐赠 | Donate
-
-> [捐赠记录,感谢你们的支持！](http://git.oschina.net/baomidou/kisso/wikis/%E6%8D%90%E8%B5%A0%E8%AE%B0%E5%BD%95)
-
-![捐赠 mybatis-plus](http://git.oschina.net/uploads/images/2015/1222/211207_0acab44e_12260.png "支持一下mybatis-plus")
-
+mybatisplus-demo
+mybatis-plus:
+  # 如果是放在src/main/java目录下 classpath:/com/yourpackage/*/mapper/*Mapper.xml
+  # 如果是放在resource目录 classpath:/mapper/*Mapper.xml
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.yourpackage.*.entity
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 3
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #mp2.3+ 全局表前缀 mp_
+    #table-prefix: mp_
+    #刷新mapper 调试神器
+    #refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    # Sequence序列接口实现类配置
+    key-generator: com.baomidou.mybatisplus.incrementer.OracleKeyGenerator
+    #逻辑删除配置（下面3个配置）
+    logic-delete-value: 1
+    logic-not-delete-value: 0
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    #自定义填充策略接口实现
+    meta-object-handler: com.baomidou.springboot.MyMetaObjectHandler
+  configuration:
+    #配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId） 
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    #配置JdbcTypeForNull, oracle数据库必须配置
+    jdbc-type-for-null: 'null'
